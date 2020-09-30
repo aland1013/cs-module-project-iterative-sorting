@@ -66,7 +66,7 @@ def counting_sort(arr, maximum=None):
         # return an error if any number in arr is negative
         if i < 0:
             return 'Error, negative numbers not allowed in Count Sort'
-        # count how many times i appears in arr
+        # count how many times value 'i' appears in arr
         buckets[i] += 1
     
     res = [] # sorted list
