@@ -23,9 +23,12 @@ def bubble_sort(arr):
     # Your code here 
     for i in range (len(arr) -1, 0, -1):
         for j in range(0, i):
+            # compare each item to the one on its right
+            # if it is larger, swap them
             if arr[j] > arr[j + 1]:
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
-
+        # repeat, decreasing the "end" of the list by one each time
+        
     return arr
 
 '''
