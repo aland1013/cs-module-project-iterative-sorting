@@ -7,19 +7,28 @@ def selection_sort(arr):
         # TO-DO: find next smallest element
         # (hint, can do in 3 loc)
         # Your code here
-
+        for j in range(cur_index + 1, len(arr)):
+            if arr[j] < arr[smallest_index]:
+                smallest_index = j
 
         # TO-DO: swap
         # Your code here
+        arr[smallest_index], arr[cur_index] = arr[cur_index], arr[smallest_index]
 
     return arr
 
 
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort(arr):
-    # Your code here
-
-
+    # Your code here 
+    for i in range (len(arr) -1, 0, -1):
+        for j in range(0, i):
+            # compare each item to the one on its right
+            # if it is larger, swap them
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+        # repeat, decreasing the "end" of the list by one each time
+        
     return arr
 
 '''
@@ -41,6 +50,32 @@ What is the time and space complexity of the counting sort algorithm?
 '''
 def counting_sort(arr, maximum=None):
     # Your code here
-
-
-    return arr
+    
+    # check to see if maximum was passed in correctly
+    # and if arr is empty
+    if maximum == None:
+        if len(arr) > 0:
+            maximum = max(arr)
+        else:
+            return arr
+        
+    # create a list of 0s of length 'maximum'    
+    buckets = [0 for num in range(maximum + 1)]
+    
+    for i in arr:
+        # return an error if any number in arr is negative
+        if i < 0:
+            return 'Error, negative numbers not allowed in Count Sort'
+        # count how many times value 'i' appears in arr
+        buckets[i] += 1
+    
+    res = [] # sorted list
+    
+    for i in range(len(buckets)):
+        # loop through buckets, each time a value in buckets is greater than 0,
+        # insert the index into the sorted list 'value' times
+        while buckets[i] > 0:
+            res.append(i)
+            buckets[i] -= 1
+    
+    return res
